@@ -1,5 +1,5 @@
 import { useQuery } from "react-query";
-import { getCurrentUser } from "../../services/authServices";
+import { getCurrentUser } from "../services/authServices";
 
 export const useUser = () => {
   const { data: user, isLoading } = useQuery({

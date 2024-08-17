@@ -4,12 +4,14 @@ import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { useMutation } from "react-query";
 
-import { login } from "../../services/authServices";
+import { login } from "../services/authServices";
 
 import FormRow from "../components/FormRow";
 import Button from "../components/Button";
 import Row from "../components/Row";
 import HyperLink from "../components/HyperLink";
+import { useEffect } from "react";
+import { useUser } from "../hooks/authHooks";
 
 const Login = () => {
   const {
@@ -19,6 +21,12 @@ const Login = () => {
   } = useForm();
 
   const navigate = useNavigate();
+
+  const { user, isLoading: isLoadingUser } = useUser();
+
+  useEffect(() => {
+    if (!isLoadingUser && user) navigate("/");
+  }, [isLoadingUser, user, navigate]);
 
   const { mutate, isLoading } = useMutation({
     mutationKey: ["login"],

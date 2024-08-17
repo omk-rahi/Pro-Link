@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
 import { useMutation } from "react-query";
 
-import { login, register as userRegister } from "../../services/authServices";
+import { register as userRegister } from "../services/authServices";
 
 import FormRow from "../components/FormRow";
 import Button from "../components/Button";
